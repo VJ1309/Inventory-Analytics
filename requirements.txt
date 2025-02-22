@@ -6,3 +6,4 @@ datetime
 geneticalgorithm
 plotly.express
 pygwalker
+matplotlib
