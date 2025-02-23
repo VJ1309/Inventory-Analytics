@@ -7,12 +7,23 @@ from datetime import datetime
 from geneticalgorithm import geneticalgorithm as ga
 import plotly.express as px
 from pygwalker.api.streamlit import StreamlitRenderer
+#from dotenv import load_dotenv
+from langchain_groq.chat_models import ChatGroq
+from pandasai import SmartDataframe
+
+#load_dotenv()
+
+llm = ChatGroq(
+    model_name = "mixtral-8x7b-32768",
+    api_key = "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",
+    temperature=0.2
+)
 
 # Configure the page
 st.set_page_config(page_title="Inventory Analytics Data App", layout="wide")
 
 # Main header
-st.title("Inventory Analytics Dashboard")
+st.title("Inventory Analytics Data App")
 
 # Sidebar: File uploader for inventory dataj
 st.sidebar.header("Upload Your Inventory Data")
@@ -43,9 +54,14 @@ with tabs[0]:
 with tabs[1]:
     st.header("Spoilage Alert")
     if data is not None:
-        st.write("Analyzing data for spoilage alerts...")
-        # Insert logic for spoilage alerts here using the data
-        st.write("Spoilage alerts and critical inventory issues will be displayed here.")
+        with st.expander("🔎 Dataframe Preview"):
+            st.write(data.head(5))
+        query = st.text_area("🗣️ Chat with Dataframe")
+        st.write(query)
+        if query:
+            df = SmartDataframe(data, config = {"llm":llm})
+            result = df.chat(query)
+            st.write(result)
     else:
         st.info("Please upload a CSV file from the sidebar to generate spoilage alerts.")
 
