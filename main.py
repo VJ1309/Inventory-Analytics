@@ -39,7 +39,7 @@ if uploaded_file is not None:
         st.sidebar.error(f"Error reading file: {e}")
 
 # Create tabs for different dashboard sections
-tabs = st.tabs(["Data Exploration", "Spoilage Alert", "Simulation"])
+tabs = st.tabs(["Data Exploration", "Chat with your Data", "Simulation"])
 
 # Data Exploration Tab
 with tabs[0]:
@@ -52,7 +52,7 @@ with tabs[0]:
 
 # Spoilage Alert Tab
 with tabs[1]:
-    st.header("Spoilage Alert")
+    st.header("Chat with your Data")
     if data is not None:
         with st.expander("🔎 Dataframe Preview"):
             st.write(data.head(5))
@@ -63,7 +63,7 @@ with tabs[1]:
             result = df.chat(query)
             st.write(result)
     else:
-        st.info("Please upload a CSV file from the sidebar to generate spoilage alerts.")
+        st.info("Please upload a CSV file from the sidebar to chat with your data.")
 
 # Simulation Tab
 with tabs[2]:
@@ -71,7 +71,7 @@ with tabs[2]:
     st.write("Use this tab to simulate different inventory optimization algorithms.")
     
     # Add a selectbox for choosing the simulation model
-    sim_model = st.selectbox("Select Simulation Model", options=["","Genetic Algorithm", "EOQ", "Monte Carlo Simulation"])
+    sim_model = st.selectbox("Select Simulation Model", options=["Choose the model from the drop down","Genetic Algorithm", "EOQ", "Monte Carlo Simulation"])
 
     if sim_model == "Genetic Algorithm":
         st.write("Configure Genetic Algorithm parameters below.")
