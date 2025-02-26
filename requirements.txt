@@ -9,4 +9,3 @@ pygwalker
 matplotlib
 langchain_groq
 pandasai
-PIL
