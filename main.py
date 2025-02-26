@@ -10,7 +10,6 @@ from pygwalker.api.streamlit import StreamlitRenderer
 #from dotenv import load_dotenv
 from langchain_groq.chat_models import ChatGroq
 from pandasai import SmartDataframe
-from PIL import Image
 
 #load_dotenv()
 
@@ -44,21 +43,14 @@ tabs = st.tabs(["Introduction", "Data Exploration", "Chat with your Data", "Simu
 
 # Introduction Tab
 with tabs[0]:
-    st.header("Introduction")
-    image_path = "assets/Profile-pic.png"
-    image = Image.open(image_path)
-    col1, col2 = st.columns([1, 3])
-    with col1:
-        st.image(image, width=230)
-    with col2:
-        st.title("Varun Jain")
-        st.write(""" As a data analytics practitioner, I've honed my specialization in transforming data into actionable insights, 
+    st.title("Varun Jain")
+    st.write(""" As a data analytics practitioner, I've honed my specialization in transforming data into actionable insights, 
         ensuring that business processes are optimized for efficacy. I have over 12 years of experience leading digital transformation and 
         analytics initiatives across diverse industries including, cpg, manufacturing, healthcare, 
         and retail industries cutting across supply chain areas.""")
-        st.write('\n')
-        st.subheader("Experience & Qulifications")
-        st.write(
+    st.write('\n')
+    st.subheader("Experience & Qulifications")
+    st.write(
                 """
                 - ✔️ Delivered Scalable Supply Chain Data Solutions – Led a team of supply chain SMEs to execute Unilever’s supply chain data lake strategy using data mesh and medallion architectural concepts, and helped to establish the data quality, data catalogue, and data lineage processes.
                 - ✔️ Functional Expertise - Functional expertise in Supply Chain Planning, Inventory Optimization, Order to Cash, Sustainability and Network Optimization areas. Hands on experience in setting up advanced ML/Statistical based forecasting processes and using supply chain planning tools such as Servigistics and Xelus.
