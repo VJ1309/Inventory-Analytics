@@ -10,6 +10,7 @@ from pygwalker.api.streamlit import StreamlitRenderer
 #from dotenv import load_dotenv
 from langchain_groq.chat_models import ChatGroq
 from pandasai import SmartDataframe
+from PIL import Image
 
 #load_dotenv()
 
@@ -39,10 +40,36 @@ if uploaded_file is not None:
         st.sidebar.error(f"Error reading file: {e}")
 
 # Create tabs for different dashboard sections
-tabs = st.tabs(["Data Exploration", "Chat with your Data", "Simulation"])
+tabs = st.tabs(["Introduction", "Data Exploration", "Chat with your Data", "Simulation"])
+
+# Introduction Tab
+with tabs[0]:
+    st.header("Introduction")
+    image_path = "assets/Profile-pic.png"
+    image = Image.open(image_path)
+    col1, col2 = st.columns([1, 3])
+    with col1:
+        st.image(image, width=230)
+    with col2:
+        st.title("Varun Jain")
+        st.write(""" As a data analytics practitioner, I've honed my specialization in transforming data into actionable insights, 
+        ensuring that business processes are optimized for efficacy. I have over 12 years of experience leading digital transformation and 
+        analytics initiatives across diverse industries including, cpg, manufacturing, healthcare, 
+        and retail industries cutting across supply chain areas.""")
+        st.write('\n')
+        st.subheader("Experience & Qulifications")
+        st.write(
+                """
+                - ✔️ Delivered Scalable Supply Chain Data Solutions – Led a team of supply chain SMEs to execute Unilever’s supply chain data lake strategy using data mesh and medallion architectural concepts, and helped to establish the data quality, data catalogue, and data lineage processes.
+                - ✔️ Functional Expertise - Functional expertise in Supply Chain Planning, Inventory Optimization, Order to Cash, Sustainability and Network Optimization areas. Hands on experience in setting up advanced ML/Statistical based forecasting processes and using supply chain planning tools such as Servigistics and Xelus.
+                - ✔️ Technology & Analytics Stack – Proficient in MS Azure tech stack (ADLS, Databricks, Power BI), Python, SQL, Data & statistical modeling.
+                - ✔️ Cross-functional collaboration & agile delivery - Collaborated with cross-functional teams, including product, data engineering & business operations, to deliver scalable global products/solutions.
+                - ✔️ Consistent Top Performer – Managed to deliver complex projects across SC areas on time in full which reflects in my Unilever OPS signal from last 5 years.
+                """
+                )
 
 # Data Exploration Tab
-with tabs[0]:
+with tabs[1]:
     st.header("Data Exploration")
     if data is not None:
         pyg_app = StreamlitRenderer(data)
@@ -51,7 +78,7 @@ with tabs[0]:
         st.info("Please upload a CSV file from the sidebar to explore your data.")
 
 # Spoilage Alert Tab
-with tabs[1]:
+with tabs[2]:
     st.header("Chat with your Data")
     if data is not None:
         with st.expander("🔎 Dataframe Preview"):
@@ -66,7 +93,7 @@ with tabs[1]:
         st.info("Please upload a CSV file from the sidebar to chat with your data.")
 
 # Simulation Tab
-with tabs[2]:
+with tabs[3]:
     st.header("Simulation")
     st.write("Use this tab to simulate different inventory optimization algorithms.")
     
