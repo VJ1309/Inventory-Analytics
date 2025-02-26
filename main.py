@@ -15,7 +15,7 @@ from pandasai import SmartDataframe
 
 llm = ChatGroq(
     model_name = "mixtral-8x7b-32768",
-    api_key = "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",
+    api_key = st.secrets("auth_key"),
     temperature=0.2
 )
 
