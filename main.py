@@ -13,9 +13,11 @@ from pandasai import SmartDataframe
 
 #load_dotenv()
 
+api_key = st.secrets["api_keys"]["GROQ_API_KEY"]
+
 llm = ChatGroq(
     model_name = "mixtral-8x7b-32768",
-    api_key = "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",
+    api_key = api_key,
     temperature=0.2
 )
 
