@@ -16,9 +16,9 @@ from pandasai import SmartDataframe
 api_key = st.secrets["api_keys"]["GROQ_API_KEY"]
 
 llm = ChatGroq(
-    model_name = "mixtral-8x7b-32768",
+    model_name = "deepseek-r1-distill-qwen-32b",
     api_key = api_key,
-    temperature=0.2
+    temperature=0.6
 )
 
 # Configure the page
